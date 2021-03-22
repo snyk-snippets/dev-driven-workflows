@@ -1,0 +1,14 @@
+#!/bin/sh
+
+echo "Linting Dockerfile ...\c"
+LINT=$(hadolint Dockerfile)
+if [[ $? > 0 ]]
+then
+    echo " FAILED\n"
+    echo "$LINT"
+    echo "\nLinting failed, commit aborted."
+    exit 1
+fi
+
+echo " PASSED"
+exit 0
